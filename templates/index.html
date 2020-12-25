@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>
+    Homepage - Pulmo
+</title>
+{% endblock %}
+
+{% block maincontent %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Welcome to pulmo!</h1>
+        <p class="lead">Are you a smoker? Then pulmo can give you a description about symptomp's pattern base on a data set.</p>
+        <a href={{url_for('uploadDataset')}} class="btn btn-primary">Upload data</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block desc_content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="text-center">How pulmo works</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ url_for('static', filename='kalehub-short.png') }}" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                        content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ url_for('static', filename='kalehub-short.png') }}" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                        content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ url_for('static', filename='kalehub-short.png') }}" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                        content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

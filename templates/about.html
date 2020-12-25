@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>About - Pulmo</title>
+{% endblock %}
+
+{% block maincontent %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">About pulmo</h1>
+        <p class="lead">What is pulmo? Why even bother using it?</p>
+    </div>
+</div>
+{% endblock %}
+{% block desc_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="card bg-primary text-white">
+                <img class="card-img"  width="841" height="270">
+                <div class="card-img-overlay">
+                    <h4 class="card-title">What is pulmo</h4>
+                    <p class="card-text">Pulmo is an undergraduate thesis project created by a student named <strong>Teguh Satya</strong>. This project is coded with love using python, supported with python flask framework (for web development) and bootstrap 4 (for the front-end). Pulmo is a website that will give user the association rules based on the dataset that the user input. The association rules is calculated using Apriori Algorithm, then transferred to the website using flaskframework. The original purpose of Pulmo is to give the pattern of respiratory disease of an active smoker. But still, it can be use to any given dataset, as long as it's compatible enough to do the algorithm such as a market-basket dataset etc.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="card bg-primary text-white">
+                <img class="card-img" width="841" height="270">
+                <div class="card-img-overlay">
+                    <h4 class="card-title">Developer</h4>
+                    <p class="card-text"> I Gede Teguh Satya Dharma, also known as <strong>Teguh Satya</strong> is a student who is currently studying a major of computer science in Udayana University. Teguh Satya was born October 11th 1999. And will soon get his degree!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Result - Pulmo</title>
+{% endblock %}
+
+{% block maincontent %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Result for {{ theFile }}</h1>
+        <p class="lead">Here is the result of {{ theFile }}<br> With minimum support = {{ ms }}%, and minimum confidence {{ mc }}%</p>
+    </div>
+</div>
+{% endblock %}
+{% block desc_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col">No.</th> -->
+                        <th scope="col">Association rules</th>
+                        <th scope="col">Confidence value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for k, v in dt.items() %}
+                    <tr>
+                        <!-- <th scope="row">{{ count }}</th> -->
+                        <td>{{ k }}</td>
+                        <td>{{ v }}%</td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <a href={{ url_for('redo') }} class="btn btn-success col-lg-12">Try again</a>
+    </div>
+</div>
+
+
+{% endblock %}
