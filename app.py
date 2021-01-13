@@ -19,7 +19,7 @@ def index():
 def allowed_file(filename):
     if not "." in filename:
         return False
-    ext = filename.rsplit(".", 1)[1]
+    ext = filename.split(".", 1)[1]
 
     if ext.upper() in app.config['ALLOWED_EXTENSIONS']:
         return True
@@ -101,6 +101,7 @@ def makeCombination(ft, si):
     return cb
 
 def findSup(cl, ft, ms, si):
+    print('calculating...')
     # making combination
     cb = makeCombination(ft,si)
     # print('size {} : {}'.format(si, cb))
