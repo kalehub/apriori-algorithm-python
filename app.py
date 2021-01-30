@@ -216,6 +216,13 @@ def findConfidence(ni,cl, mc):
             sl.remove(s)
     print('Sublist : ', sl)
     assocRule = findAssocRule(sl,cl,mc,rl,confVal)
+
+    # changing confidence value to %
+    for a in range(len(confVal)):
+        confVal[a] = round(confVal[a]*100,2)
+
+
+
     return rl,confVal
 
 def makeSublist(ni):
@@ -228,17 +235,6 @@ def makeSublist(ni):
             lists[j] = lists[j] + [new]
         lists = orig + lists
     return lists
-
-def makeDictio(r, c):
-    dictio = dict()
-    countMe = 0
-    for item in range(0, len(r), 2):
-        temp = r[item:item+2]
-        # repr() enables list as dictionary key
-        dictio[repr(temp)] = c[countMe]*100
-        countMe+=1
-    return dictio
-
 
 @app.route('/result/<filename>/minsupport/<ms>/minconfidence/<mc>')
 def result(filename, ms, mc):
@@ -267,17 +263,29 @@ def result(filename, ms, mc):
     rules, confiValue = findConfidence(nextIter,clData, minCon)
     print('displaying rules and confidence value : {} {}'.format(rules, confiValue))
 
+
+
     # step 7 making a dictionary of rules and its values
-    dictConf = makeDictio(rules, confiValue)
-    if len(dictConf) == 0:
+    if len(confiValue) == 0:
         flash('The minimum confidence value is too big for the current dataset')
         return redirect(url_for('uploadDataset'))
     else:
-        print('Dictionary : ')
-        for k, v in dictConf.items():
-            print(k, v)
-
-        return render_template('result.html', theFile = filename, ms=ms, mc=mc, dt = dictConf)
+        # turning association rules to a text (revision 1)
+        assoc_rules = list()
+        for i in range(0, len(rules),2):
+            atr_asosiasi = 'If the patient '
+            for r in rules[i]:
+                atr_asosiasi += str(r)+' '
+            atr_asosiasi += 'then '
+            for r in rules[i+1]:
+                atr_asosiasi+= str(r)+ ' '
+            assoc_rules.append(atr_asosiasi)
+        
+        # displaying the result
+        for k in range(0, len(assoc_rules)):
+            print('{}. {} {}%'.format(k+1, assoc_rules[k], confiValue[k]*100))
+        
+        return render_template('result.html', theFile = filename, ms=ms, mc=mc, asc_role = assoc_rules, cf_value = confiValue, lenA = len(assoc_rules))
 
 @app.route('/redo')
 def redo():

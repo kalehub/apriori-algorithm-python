@@ -1,0 +1,10 @@
+Revision Log:
+----
+
+Revision 01:
+--
+done in Jan 30th 2021
+things that i fix :
+    - changing the language concistency
+    - tinkering a new way to display association rules with text (and creating a new list)
+    - minor front-end update

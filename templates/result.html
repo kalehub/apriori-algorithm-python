@@ -7,7 +7,7 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Result for {{ theFile }}</h1>
-        <p class="lead">Here is the result of {{ theFile }}<br> With minimum support {{ ms }}%, and minimum confidence {{ mc }}%</p>
+        <p class="lead">Here is the result of {{ theFile }}<br> With minimum support {{ ms }}% and minimum confidence {{ mc }}%</p>
     </div>
 </div>
 {% endblock %}
@@ -18,17 +18,17 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <!-- <th scope="col">No.</th> -->
+                        <th scope="col">No.</th>
                         <th scope="col">Association rules</th>
                         <th scope="col">Confidence value</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for k, v in dt.items() %}
+                    {% for k in range(lenA)%}
                     <tr>
-                        <!-- <th scope="row">{{ count }}</th> -->
-                        <td>{{ k }}</td>
-                        <td>{{ v }}%</td>
+                        <th scope="row">{{ k+1 }}.</th>
+                        <td>{{ asc_role[k] }}</td>
+                        <td>{{ cf_value[k] }}%</td>
                     </tr>
 
                     {% endfor %}
